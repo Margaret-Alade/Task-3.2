@@ -7,24 +7,19 @@
 class Counter {
 private:
     int num;
+
 public:
 
     int get_current_num() {
         return num;
     }
 
-    void set_num(int value) {
-        num = value;
-    }
-
-    void add_1(int num) {
+    void add_1() {
         ++num;
-        set_num(num);
     }
 
-    void substract_1(int num) {
+    void substract_1() {
         --num;
-        set_num(num);
     }
 
     Counter(int num) {
@@ -36,14 +31,14 @@ public:
     }
 
 
-
 };
 
 int main() {
 
     setlocale(LC_ALL, "Russian");
 
-    Counter user_count;
+    system("chcp 1251");
+
 
     std::string answer;
     int user_num;
@@ -57,6 +52,8 @@ int main() {
 
         std::cin >> user_num;
 
+        Counter user_count{user_num};
+
         do {
 
             std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
@@ -66,16 +63,12 @@ int main() {
             std::cout << '\n';
 
             if (user_com == "+") {
-
-                user_count.add_1(user_num);
-                user_num = user_count.get_current_num();
-
+                user_count.add_1();
 
             }
             else if (user_com == "-") {
 
-                user_count.substract_1(user_num);
-                user_num = user_count.get_current_num();
+                user_count.substract_1();
 
             }
             else if (user_com == "=") {
@@ -95,8 +88,10 @@ int main() {
     }
     else if (answer == "нет") {
 
+
+        Counter user_count;
+
         do {
-            user_num = user_count.get_current_num();
 
             std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
 
@@ -104,13 +99,11 @@ int main() {
             std::cout << '\n';
 
             if (user_com == "+") {
-                user_count.add_1(user_num);
-                user_num = user_count.get_current_num();
+                user_count.add_1();
 
             }
             else if (user_com == "-") {
-                user_count.substract_1(user_num);
-                user_num = user_count.get_current_num();
+                user_count.substract_1();
 
             }
             else if (user_com == "=") {
